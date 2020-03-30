@@ -19,7 +19,7 @@ const AddToDoList = ({ dispatch }) => {
       >
         <div className="input-group">
           <div className="input-group-prepend">
-            <span class="input-group-text" id="input">
+            <span className="input-group-text" id="input">
               Titre
             </span>
           </div>

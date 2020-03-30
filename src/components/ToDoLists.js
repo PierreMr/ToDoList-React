@@ -1,12 +1,20 @@
 import React from "react";
 import ToDoList from "./ToDoList";
+import { connect } from "react-redux";
 
-const todolists = [];
+const ToDoLists = state => (
+  <div className="row todolists">
+    {state.todolists.map(todolist => (
+      <ToDoList key={todolist.id} {...todolist} />
+    ))}
+  </div>
+);
 
-for (let i = 0; i < 5; i++) {
-  todolists.push(<ToDoList key={i} />);
-}
+const mapStateToProps = state => {
+  return {
+    todolists: state.todolists,
+    todos: state.todos
+  };
+};
 
-const ToDoLists = () => <div className="row">{todolists}</div>;
-
-export default ToDoLists;
+export default connect(mapStateToProps)(ToDoLists);

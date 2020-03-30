@@ -1,9 +1,18 @@
-let idToDoList = 0;
+let idToDoList = 1;
+let idToDo = 2;
 
 export const addToDoList = title => ({
   type: "ADD_TODOLIST",
   id: idToDoList++,
-  title: capitalize(title)
+  title: capitalize(title),
+  todos: []
+});
+
+export const addToDo = ({ title, idToDoList }) => ({
+  type: "ADD_TODO",
+  id: idToDo++,
+  title: capitalize(title),
+  idToDoList
 });
 
 export function capitalize(text) {

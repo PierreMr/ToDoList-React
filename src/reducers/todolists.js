@@ -1,4 +1,6 @@
-const todolists = (state = [], action) => {
+const mockToDoLists = [];
+
+const todolists = (state = mockToDoLists, action) => {
   switch (action.type) {
     case "ADD_TODOLIST":
       return [

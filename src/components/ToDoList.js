@@ -1,16 +1,33 @@
 import React from "react";
+import style from "./ToDoList.module.css";
+import AddToDo from "./../containers/AddToDo";
+import ToDo from "./ToDo";
+import { connect } from "react-redux";
 
-const ToDoList = i => (
-  <div className="card col-3 m-3">
-    <div className="card-body">
-      <h2 className="card-title">Titre</h2>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
-      </ul>
+const ToDoList = todolist => {
+  console.log(todolist);
+
+  return (
+    <div className={`card col-3 m-3 ${style.card_custom} shadow-lg`}>
+      <div className="card-body">
+        <h2 className={`card-title ${style.title}`}>{todolist.title}</h2>
+        <ul className="list-group list-group-flush">
+          {todolist.todos
+            .filter(t => t.idToDoList === todolist.id)
+            .map(todo => (
+              <ToDo key={todo.id} {...todo} />
+            ))}
+        </ul>
+        <AddToDo idToDoList={todolist.id} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-export default ToDoList;
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  };
+};
+
+export default connect(mapStateToProps)(ToDoList);
