@@ -3,8 +3,10 @@ import style from "./ToDoList.module.css";
 import AddToDo from "./../containers/AddToDo";
 import RemoveToDoList from "./../containers/RemoveToDoList";
 import ToDo from "./ToDo";
+import { connect } from "react-redux";
 
-const ToDoList = (todolist) => {
+const ToDoList = (props) => {
+  const todolist = props.todolist;
   return (
     <div className={`card col-3 m-3 ${style.card_custom} shadow-lg`}>
       <div className="card-body">
@@ -23,4 +25,10 @@ const ToDoList = (todolist) => {
   );
 };
 
-export default ToDoList;
+const mapStateToProps = (state) => {
+  return {
+    todolists: state.todolists,
+  };
+};
+
+export default connect(mapStateToProps)(ToDoList);

@@ -8,7 +8,7 @@ const AddToDo = ({ dispatch, idToDoList }) => {
   return (
     <div className="m-3">
       <form
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
           if (!input.value.trim()) {
             return;
@@ -18,7 +18,7 @@ const AddToDo = ({ dispatch, idToDoList }) => {
         }}
       >
         <div className="input-group">
-          <input ref={node => (input = node)} className="form-control" />
+          <input ref={(node) => (input = node)} className="form-control" />
           <button type="submit" className="btn btn-primary btn-sm ml-1">
             +
           </button>

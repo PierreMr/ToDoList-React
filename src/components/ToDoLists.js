@@ -6,7 +6,7 @@ const ToDoLists = ({ todolists }) => {
   return (
     <div className="row justify-content-around">
       {todolists.map((todolist) => (
-        <ToDoList key={todolist.id} {...todolist} />
+        <ToDoList key={todolist.id} todolist={todolist} />
       ))}
     </div>
   );
