@@ -2,18 +2,19 @@ import React from "react";
 import ToDoList from "./ToDoList";
 import { connect } from "react-redux";
 
-const ToDoLists = state => (
-  <div className="row todolists">
-    {state.todolists.map(todolist => (
-      <ToDoList key={todolist.id} {...todolist} />
-    ))}
-  </div>
-);
+const ToDoLists = ({ todolists }) => {
+  return (
+    <div className="row justify-content-around">
+      {todolists.map((todolist) => (
+        <ToDoList key={todolist.id} {...todolist} />
+      ))}
+    </div>
+  );
+};
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     todolists: state.todolists,
-    todos: state.todos
   };
 };
 
